@@ -18,6 +18,7 @@
         <module>comet</module>
         <module>logic</module>
         <module>web</module>
+        <module>example</module>
     </modules>
     <properties>
         <skipTests>true</skipTests>
