@@ -47,7 +47,7 @@ public class ChatClient {
                     .build();
             Proto proto = new Proto();
             proto.setVersion((short) 1);
-            proto.setOperation(0);
+            proto.setOperation(1);
             proto.setBody(authReq.toByteArray());
             f.channel().writeAndFlush(proto);
 
