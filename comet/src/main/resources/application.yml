@@ -12,7 +12,7 @@ dubbo:
     name: dubbo-consumer
   registry:
     protocol: zookeeper
-    address: localhost
+    address: 127.0.0.1
     port: 2181
   reference-1:
     interface: wiki.tony.chat.base.service.MsgService
