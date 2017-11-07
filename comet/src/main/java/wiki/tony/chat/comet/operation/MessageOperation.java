@@ -27,6 +27,9 @@ public class MessageOperation extends AbstractOperation {
 
     @Override
     public void action(Channel ch, Proto proto) throws Exception {
+        /**
+         * 检查这个用户是否已经通过身份验证
+         */
         checkAuth(ch);
 
         // receive a message
