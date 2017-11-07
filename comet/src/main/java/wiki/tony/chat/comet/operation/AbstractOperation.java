@@ -10,6 +10,11 @@ import wiki.tony.chat.comet.exception.NotAuthException;
  */
 public abstract class AbstractOperation implements Operation {
 
+    /**
+     * Channel上的AttributeMap中存储的业务数据是可以共享的
+     * @param ch
+     * @return
+     */
     protected String getKey(Channel ch) {
         return ch.attr(Constants.KEY_USER_ID).get();
     }
