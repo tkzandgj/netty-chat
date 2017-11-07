@@ -31,6 +31,10 @@ public class AuthOperation extends AbstractOperation {
     @Override
     public void action(Channel ch, Proto proto) throws Exception {
         // connection auth
+        /**
+         * 把用户的信息存储到Netty中的AttributeMap中，因为是存储到Channel上的AttributeMap中的
+         * 这样的话在多个ChannelHandler之间是可以共享的
+         */
         setKey(ch, authService.auth(serverId, proto));
 
         // write reply
