@@ -73,7 +73,13 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<Proto> {
         Operation op = chatOperation.find(proto.getOperation());
         if (op != null) {
             LOG.debug(proto.toString());
+            /**
+             * 处理接收到的消息   首次接收到的时候会去验证(AuthService)
+             */
             op.action(ctx.channel(), proto);
+            /**
+             * 服务端记录消息处理的类型
+             */
             msgService.receive(proto);
         } else {
             LOG.warn("Not found operationId: " + proto.getOperation());
