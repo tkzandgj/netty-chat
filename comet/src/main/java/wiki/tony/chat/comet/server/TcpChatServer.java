@@ -2,6 +2,7 @@ package wiki.tony.chat.comet.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -39,6 +40,9 @@ public class TcpChatServer implements ChatServer {
             ServerBootstrap b = new ServerBootstrap()
                     .group(bossGroup, workGroup)
                     .channel(NioServerSocketChannel.class)
+                    .option(ChannelOption.SO_BACKLOG, 1024)   // 设置服务端等待队列的大小
+                    .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 2000)  // 设置超时时间
+                    .option(ChannelOption.SO_KEEPALIVE, true)  // TCP 参数  自动测试TCP连接状态
                     .childHandler(serverInitializer);
 
             logger.info("Starting TcpChatServer... Port: " + port);
