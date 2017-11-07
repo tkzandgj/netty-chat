@@ -21,6 +21,13 @@ public class TcpProtoCodec extends MessageToMessageCodec<ByteBuf, Proto> {
 
     private Logger logger = LoggerFactory.getLogger(TcpProtoCodec.class);
 
+    /**
+     * 协议编码
+     * @param channelHandlerContext
+     * @param proto
+     * @param list
+     * @throws Exception
+     */
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, Proto proto, List<Object> list) throws Exception {
         ByteBuf byteBuf = ByteBufAllocator.DEFAULT.buffer();
@@ -44,6 +51,14 @@ public class TcpProtoCodec extends MessageToMessageCodec<ByteBuf, Proto> {
         logger.debug("encode: {}", proto);
     }
 
+
+    /**
+     * 协议解码
+     * @param channelHandlerContext
+     * @param byteBuf
+     * @param list
+     * @throws Exception
+     */
     @Override
     protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List<Object> list) throws Exception {
         Proto proto = new Proto();
